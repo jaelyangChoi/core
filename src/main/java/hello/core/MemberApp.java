@@ -9,7 +9,10 @@ public class MemberApp {
 
     public static void main(String[] args) {
 
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        //MemberService memberService = new MemberServiceImpl();
+
         Member member = new Member(1L, "최재량", Grade.BASIC);
         memberService.join(member);
         Member findMember = memberService.findMember(1L);
