@@ -14,4 +14,8 @@ public class FixDiscountPolicy implements DiscountPolicy {
         else
             return 0;
     }
+
+    public int getDiscountFixAmount() {
+        return discountFixAmount;
+    }
 }
