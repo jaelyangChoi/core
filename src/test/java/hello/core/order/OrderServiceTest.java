@@ -17,12 +17,14 @@ public class OrderServiceTest {
     //private OrderService orderService = new OrderServiceImpl();
     MemberService memberService;
     OrderService orderService;
+    DiscountPolicy discountPolicy;
 
     @BeforeEach
     void beforeEach() {
         AppConfig appConfig = new AppConfig();
         this.memberService = appConfig.memberService();
         this.orderService = appConfig.orderService();
+        this.discountPolicy = appConfig.discountPolicy();
     }
 
     @Test
@@ -31,11 +33,13 @@ public class OrderServiceTest {
         Long memberId = 1L;
         Member member = new Member(memberId, "최재량", Grade.VIP);
         memberService.join(member);
+        int itemPrice = 30000;
 
         //when
-        Order order = orderService.createOrder(memberId, "LG그램뷰플러스2", 330000);
+        Order order = orderService.createOrder(memberId, "LG그램뷰플러스2", itemPrice);
 
         //then
-        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
+        int discount = discountPolicy.discount(member, itemPrice);
+        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(discount);
     }
 }
