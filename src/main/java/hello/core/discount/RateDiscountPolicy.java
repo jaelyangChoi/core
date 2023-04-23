@@ -2,13 +2,11 @@ package hello.core.discount;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
-import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepositoy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RateDiscountPolicy implements DiscountPolicy {
-    private double discountRate = 10;
+    private final double discountRate = 10;
 
     @Override
     public int discount(Member member, int price) {
