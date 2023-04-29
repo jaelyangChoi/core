@@ -1,6 +1,7 @@
 package hello.core.autowired;
 
 import hello.core.member.Member;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -21,6 +22,12 @@ import java.util.Optional;
  */
 
 public class AutowiredTest {
+
+    @Test
+    @DisplayName("조회 빈이 2개 이상일 경우 문제")
+    void AutowiredCrash(){
+
+    }
 
     @Test
     void AutowiredOption() {
